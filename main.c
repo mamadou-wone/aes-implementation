@@ -45,31 +45,11 @@ static u_int8_t inv_s_box[256] = {
         0x17, 0x2b, 0x04, 0x7e, 0xba, 0x77, 0xd6, 0x26, 0xe1, 0x69, 0x14, 0x63, 0x55, 0x21, 0x0c, 0x7d};// f
 
 void subBytes(u_int8_t *state){
-    for (int i = 0; i < 16; ++i) {
-    //    printf("%c ", state[i]);
-    state[i] = s_box[state[i]];
+    for (int i = 0; i < 16; i++) {
+        state[i] = s_box[state[i]];
     }
-    printf("\n");
-//    for (int i = 0; i < 16; ++i) {
-//        printf("%c ", state[i]);
-//        state[i] = s_box[state[i]];
-//    }
-    printf(state);
 }
-void sub_bytes(u_int8_t *state) {
-    u_int8_t i, j;
-    for (i = 0; i < 4; i++) {
-        for (j = 0; j < 4; j++) {
-            // s_box row: yyyy ----
-            // s_box col: ---- xxxx
-            // s_box[16*(yyyy) + xxxx] == s_box[yyyyxxxx]
-            state[4*i+j] = s_box[state[4*i+j]];
-            int res = 4 * i + j;
-            printf("%d\n", res);
-        }
-    }
-   // printf(state);
-}
+
 int main() {
     u_int8_t state[16] = {0x67, 0x45, 0xD8, 0x6D,
                                 0x11, 0x8E, 0x82, 0xA0,
@@ -77,7 +57,5 @@ int main() {
                                 0x73, 0xD6, 0xA8, 0x53
                                 };
     subBytes(state);
-    printf("\n");
-    sub_bytes(state);
     return 0;
 }
