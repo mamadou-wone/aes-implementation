@@ -56,17 +56,43 @@ void invSubBytes(u_int8_t *state){
     }
 }
 
+void right_circle_shift(int start, int j, u_int8_t *state){
+    for (int k = 0; k < j; k++) {
+        int stop = start + 4;
+        u_int8_t temp = state[start];
+        for (int i = start; i < stop; i++) {
+            if (i == (stop - 1))
+                state[i] = temp;
+            else
+                state[i] = state[i + 1];
+        }
+    }
+}
+
+void shiftRows(u_int8_t *state){
+    int j = 1;
+    for (int i = 4; i < 16; i++) {
+        if(i % 4 == 0) {
+            printf(state);
+            right_circle_shift(i, j, state);
+            j++;
+        }
+    }
+}
+
 int main() {
-    u_int8_t state[16] = {0x67, 0x45, 0xD8, 0x6D,
-                                0x11, 0x8E, 0x82, 0xA0,
-                                0x67, 0xBB, 0x78, 0x23,
-                                0x73, 0xD6, 0xA8, 0x53
-                                };
+//    u_int8_t state[16] = {0x67, 0x45, 0xD8, 0x6D,
+//                                0x11, 0x8E, 0x82, 0xA0,
+//                                0x67, 0xBB, 0x78, 0x23,
+//                                0x73, 0xD6, 0xA8, 0x53
+//                                };
+    u_int8_t state[16] = {0x85, 0x6E, 0x61, 0x3C,
+                          0x82, 0x19, 0x13, 0xE0,
+                          0x85, 0xEA, 0xBC, 0x26,
+                          0x8F, 0xF6, 0xC2, 0xED
+                        };
     printf(state);
-    subBytes(state);
-    printf("\n");
-    printf(state);
-    invSubBytes(state);
+    shiftRows(state);
     printf("\n");
     printf(state);
     return 0;
