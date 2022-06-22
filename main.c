@@ -50,12 +50,24 @@ void subBytes(u_int8_t *state){
     }
 }
 
+void invSubBytes(u_int8_t *state){
+    for (int i = 0; i < 16; i++) {
+        state[i] = inv_s_box[state[i]];
+    }
+}
+
 int main() {
     u_int8_t state[16] = {0x67, 0x45, 0xD8, 0x6D,
                                 0x11, 0x8E, 0x82, 0xA0,
                                 0x67, 0xBB, 0x78, 0x23,
                                 0x73, 0xD6, 0xA8, 0x53
                                 };
+    printf(state);
     subBytes(state);
+    printf("\n");
+    printf(state);
+    invSubBytes(state);
+    printf("\n");
+    printf(state);
     return 0;
 }
