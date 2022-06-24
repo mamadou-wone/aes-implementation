@@ -83,7 +83,6 @@ void invShiftRows(u_int8_t *state){
         for (int i = 0; i < j; i++) {
             u_int8_t temp = state[stop - 1];
             for (int k = stop-1; k >= start ; k--) {
-           //     printf("k --> %d\n", k);
                 if (k == start)
                     state[k] = temp;
                 else
@@ -93,7 +92,6 @@ void invShiftRows(u_int8_t *state){
         j++;
         start += 4;
     }
-
 }
 
 int main() {
