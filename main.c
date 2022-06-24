@@ -63,7 +63,7 @@ void shiftRows(u_int8_t *state){
         int stop = start + 4;
         for (int i = 0; i < j; i++) {
             u_int8_t  temp = state[start];
-            for (int k = 0; k < stop; k++) {
+            for (int k = start; k < stop; k++) {
                 if( k == (stop - 1))
                     state[k] = temp;
                 else
