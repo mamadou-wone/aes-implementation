@@ -1,6 +1,6 @@
 /**
  * @author 𝕄𝕒𝕞𝕒𝕕𝕠𝕦 𝕎𝕆ℕ𝔼
- * @details #𝕒𝕞𝕚𝕣𝔹𝕠𝕤𝕤
+ * @memberof #𝕒𝕞𝕚𝕣𝔹𝕠𝕤𝕤
  */
 #include <stdio.h>
 #include "stdlib.h"
